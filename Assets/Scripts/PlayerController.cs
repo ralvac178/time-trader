@@ -22,6 +22,22 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetBool("IsMagic", true);
         }
+        else if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            transform.Rotate(Vector3.up * 90);
+        }
+        else if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            transform.Rotate(Vector3.up * -90);
+        }
+        else if (Input.GetKeyDown(KeyCode.A))
+        {
+            transform.Translate(-0.1f, 0, 0);
+        }
+        else if (Input.GetKeyDown(KeyCode.D))
+        {
+            transform.Translate(0.1f, 0, 0);
+        }
     }
 
     public void StopJump()
