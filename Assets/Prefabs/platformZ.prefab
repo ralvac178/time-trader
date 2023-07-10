@@ -1072,6 +1072,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1649569050134447710}
   - component: {fileID: 1649569050124675500}
+  - component: {fileID: 274261858413749746}
   m_Layer: 0
   m_Name: platformZ
   m_TagString: platformZ
@@ -1129,3 +1130,15 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &274261858413749746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1649569050134157950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5518f3970ad9d8488b4ad10c666a8a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

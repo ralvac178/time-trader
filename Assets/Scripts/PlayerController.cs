@@ -5,10 +5,11 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private Animator animator;
+    public static GameObject player;
     // Start is called before the first frame update
     void Start()
     {
-        
+        player = this.gameObject;
     }
 
     // Update is called once per frame
