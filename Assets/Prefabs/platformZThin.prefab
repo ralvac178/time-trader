@@ -1037,6 +1037,7 @@ GameObject:
   - component: {fileID: 3610330975987780564}
   - component: {fileID: 3610330975994749984}
   - component: {fileID: 6296917074925585073}
+  - component: {fileID: -171522555192292967}
   m_Layer: 0
   m_Name: platformZThin
   m_TagString: platformZThin
@@ -1108,6 +1109,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5518f3970ad9d8488b4ad10c666a8a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!64 &-171522555192292967
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3610330975987357684}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 8ce3a3c3a5f32446796a4a9392dec0e0, type: 3}
 --- !u!1 &3610330975987357686
 GameObject:
   m_ObjectHideFlags: 0
