@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private Animator animator;
     public static GameObject player;
+    public static GameObject platform;
     // Start is called before the first frame update
     void Start()
     {
@@ -49,5 +50,10 @@ public class PlayerController : MonoBehaviour
     public void StopMagic()
     {
         animator.SetBool("IsMagic", false);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        platform = collision.gameObject;
     }
 }
