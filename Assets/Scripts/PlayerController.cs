@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         player = this.gameObject;
+        GenerateWorld.RunDummy();
     }
 
     // Update is called once per frame
@@ -34,11 +35,11 @@ public class PlayerController : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.A))
         {
-            transform.Translate(-0.1f, 0, 0);
+            transform.Translate(-0.5f, 0, 0);
         }
         else if (Input.GetKeyDown(KeyCode.D))
         {
-            transform.Translate(0.1f, 0, 0);
+            transform.Translate(0.5f, 0, 0);
         }
     }
 
@@ -56,4 +57,10 @@ public class PlayerController : MonoBehaviour
     {
         platform = collision.gameObject;
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        GenerateWorld.RunDummy();
+    }
+
 }

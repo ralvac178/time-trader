@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GenerateMap : MonoBehaviour
+public class GenerateMapBeta : MonoBehaviour
 {
     //[SerializeField] private GameObject[] worldPart;
     private GameObject dummy;
