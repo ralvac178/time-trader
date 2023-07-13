@@ -9,7 +9,7 @@ public class Deactivate : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals("Player") && !dSchedule)
         {
-            Invoke("SetInactive", 3f);
+            Invoke("SetInactive", 4f);
             dSchedule = true;
         }   
     }

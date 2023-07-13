@@ -9,11 +9,14 @@ public class PlayerController : MonoBehaviour
     public static GameObject platform;
 
     private bool canTurn = false;
+    private Vector3 startPosition;
+
     // Start is called before the first frame update
     void Start()
     {
         player = this.gameObject;
         GenerateWorld.RunDummy();
+        startPosition = this.transform.position; // get the start pos of the player
     }
 
     // Update is called once per frame
@@ -32,12 +35,28 @@ public class PlayerController : MonoBehaviour
             transform.Rotate(Vector3.up * 90);
             GenerateWorld.dummy.transform.forward = -this.transform.forward;
             GenerateWorld.RunDummy();
+
+            if (GenerateWorld.lastPlatform.tag != "platformTSection")
+            {
+                GenerateWorld.RunDummy();
+            }
+
+            transform.position = new Vector3(startPosition.x, transform.position.y,
+                                            startPosition.z);
         }
         else if (Input.GetKeyDown(KeyCode.LeftArrow) && canTurn)
         {
             transform.Rotate(Vector3.up * -90);
             GenerateWorld.dummy.transform.forward = -this.transform.forward;
             GenerateWorld.RunDummy();
+
+            if (GenerateWorld.lastPlatform.tag != "platformTSection")
+            {
+                GenerateWorld.RunDummy();
+            }
+
+            transform.position = new Vector3(startPosition.x, transform.position.y,
+                                            startPosition.z);
         }
         else if (Input.GetKeyDown(KeyCode.A))
         {
@@ -83,6 +102,11 @@ public class PlayerController : MonoBehaviour
         if (other is SphereCollider)
         {
             canTurn = false;
+        }
+
+        if (other is BoxCollider && GenerateWorld.lastPlatform.tag != "platformTSection")
+        {
+            GenerateWorld.RunDummy();
         }
     }
 
