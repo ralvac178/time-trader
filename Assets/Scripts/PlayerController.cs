@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Animator animator;
     public static GameObject player;
     public static GameObject platform;
+
+    private bool canTurn = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,11 +27,11 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetBool("IsMagic", true);
         }
-        else if (Input.GetKeyDown(KeyCode.RightArrow))
+        else if (Input.GetKeyDown(KeyCode.RightArrow) && canTurn)
         {
             transform.Rotate(Vector3.up * 90);
         }
-        else if (Input.GetKeyDown(KeyCode.LeftArrow))
+        else if (Input.GetKeyDown(KeyCode.LeftArrow) && canTurn)
         {
             transform.Rotate(Vector3.up * -90);
         }
@@ -61,6 +63,19 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         GenerateWorld.RunDummy();
+
+        if (other is SphereCollider)
+        {
+            canTurn = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other is SphereCollider)
+        {
+            canTurn = false;
+        }
     }
 
 }

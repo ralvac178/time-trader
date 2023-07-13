@@ -258,6 +258,7 @@ GameObject:
   - component: {fileID: 1170341428410607793}
   - component: {fileID: 8040177037188667904}
   - component: {fileID: -7016095727294503711}
+  - component: {fileID: 376483679632783998}
   m_Layer: 0
   m_Name: platformTSection
   m_TagString: platformTSection
@@ -289,7 +290,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &4011830878197866249
 Animator:
-  serializedVersion: 5
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -306,8 +307,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!64 &-1757558004328218844
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -372,6 +372,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7153f735e93278741abd4ad5b609ca3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!135 &376483679632783998
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4011830878190447821}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 2.4
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4011830878190447823
 GameObject:
   m_ObjectHideFlags: 0
