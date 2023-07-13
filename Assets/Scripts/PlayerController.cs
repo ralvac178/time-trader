@@ -30,10 +30,14 @@ public class PlayerController : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.RightArrow) && canTurn)
         {
             transform.Rotate(Vector3.up * 90);
+            GenerateWorld.dummy.transform.forward = -this.transform.forward;
+            GenerateWorld.RunDummy();
         }
         else if (Input.GetKeyDown(KeyCode.LeftArrow) && canTurn)
         {
             transform.Rotate(Vector3.up * -90);
+            GenerateWorld.dummy.transform.forward = -this.transform.forward;
+            GenerateWorld.RunDummy();
         }
         else if (Input.GetKeyDown(KeyCode.A))
         {
@@ -62,7 +66,11 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        GenerateWorld.RunDummy();
+        if (other is BoxCollider && GenerateWorld.lastPlatform.tag != "platformTSection")
+        {
+            GenerateWorld.RunDummy();
+        }
+        
 
         if (other is SphereCollider)
         {
