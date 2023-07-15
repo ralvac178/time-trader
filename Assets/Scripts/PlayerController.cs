@@ -80,7 +80,15 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        platform = collision.gameObject;
+        if (collision.gameObject.tag.Equals("fire"))
+        {
+            animator.SetTrigger("isDie");
+        }
+        else
+        {
+            platform = collision.gameObject;
+        }
+        
     }
 
     private void OnTriggerEnter(Collider other)

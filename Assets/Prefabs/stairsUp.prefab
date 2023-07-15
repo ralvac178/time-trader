@@ -1009,7 +1009,7 @@ GameObject:
   - component: {fileID: -4769121635326505156}
   - component: {fileID: -8959689441347641387}
   - component: {fileID: 6057685534021628517}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: stairsUp
   m_TagString: stairsUp
   m_Icon: {fileID: 0}

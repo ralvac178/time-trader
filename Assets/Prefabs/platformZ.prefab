@@ -1076,7 +1076,7 @@ GameObject:
   - component: {fileID: -9024014444944920927}
   - component: {fileID: 7525412148376069419}
   - component: {fileID: -7514835455488664034}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: platformZ
   m_TagString: platformZ
   m_Icon: {fileID: 0}

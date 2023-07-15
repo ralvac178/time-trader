@@ -1115,7 +1115,7 @@ GameObject:
   - component: {fileID: 4721004835694958838}
   - component: {fileID: 2560632889232947508}
   - component: {fileID: 547590983638659507}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: platformZSplit
   m_TagString: platformZSplit
   m_Icon: {fileID: 0}
