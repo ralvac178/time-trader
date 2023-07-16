@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
     private bool canTurn = false;
     private Vector3 startPosition;
 
+    public static bool isDead = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -83,6 +85,7 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.tag.Equals("fire"))
         {
             animator.SetTrigger("isDie");
+            isDead = true;
         }
         else
         {
