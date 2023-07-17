@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour
 
     public static bool isDead = false;
 
+    [SerializeField] private Rigidbody rb;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +29,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             animator.SetBool("IsJump", true);
+            rb.AddForce(Vector3.up * 200);
         }
         else if (Input.GetKeyDown(KeyCode.M))
         {
