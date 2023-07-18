@@ -90,7 +90,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag.Equals("fire"))
+        if (collision.gameObject.tag.Equals("fire") || collision.gameObject.tag.Equals("wall"))
         {
             animator.SetTrigger("isDie");
             isDead = true;
