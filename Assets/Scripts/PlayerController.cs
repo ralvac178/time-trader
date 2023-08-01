@@ -15,12 +15,18 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private Rigidbody rb;
 
+    public GameObject magic;
+    public Transform magicStartPosition;
+    private Rigidbody magicRb;
+
     // Start is called before the first frame update
     void Start()
     {
         player = this.gameObject;
         GenerateWorld.RunDummy();
         startPosition = this.transform.position; // get the start pos of the player
+
+        magicRb = magic.GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -128,5 +134,19 @@ public class PlayerController : MonoBehaviour
             GenerateWorld.RunDummy();
         }
     }
+    
+    // These lines are made for Spell
 
+    public void CastSpell()
+    {
+        magic.transform.position = magicStartPosition.position;
+        magic.SetActive(true);
+        magicRb.AddForce(this.transform.forward * 4000);
+        Invoke("KillMagic", 1);
+    }
+
+    public void KillMagic()
+    {
+        magic.SetActive(false);
+    }
 }

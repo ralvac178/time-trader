@@ -21,7 +21,7 @@ public class randomPosFire : MonoBehaviour
         }
         else
         {
-            maxLengh = 4f;
+            maxLengh = 3f;
             randomOffset = Random.Range(-maxLengh, maxLengh);
             transform.localPosition += new Vector3(0,
                                     0, randomOffset);
