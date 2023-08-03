@@ -14,13 +14,18 @@ public class Deactivate : MonoBehaviour
         if (collision.gameObject.tag.Equals("Player") && !dSchedule)
         {
             Invoke("SetInactive", 4f);
-            dSchedule = true; //prevent to inactive platforms who will be created after
+            dSchedule = true; //prevent to inactive platforms when player jumps or when
+                              // player bouncing on stairs
         }   
     }
 
     public void SetInactive()
     {
-        gameObject.SetActive(false);
-        dSchedule = false;
+        if (!PlayerController.isDead)
+        {
+            gameObject.SetActive(false);
+            dSchedule = false;
+        }
+        
     }
 }

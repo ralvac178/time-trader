@@ -9,7 +9,8 @@ public class randomPosFire : MonoBehaviour
     {
         float maxLengh = 0;
         float randomOffset = 0f;
-        if (transform.parent.gameObject.name.Equals("platformTSectionFire(Clone)"))
+        if (transform.parent.gameObject.name.Equals("platformTSectionFire(Clone)") 
+            || transform.parent.gameObject.name.Equals("platformTSectionWall(Clone)"))
         {
             maxLengh = 8f;
             randomOffset = Random.Range(-maxLengh, maxLengh);
