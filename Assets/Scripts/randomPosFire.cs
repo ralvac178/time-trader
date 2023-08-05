@@ -2,17 +2,38 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class randomPosFire : MonoBehaviour
+public class RandomPosFire : MonoBehaviour
 {
+    public static RandomPosFire randomPosFire;
+    public bool letRandomPos = false;
+
+    private void OnEnable()
+    {
+        //if (letRandomPos && transform.gameObject.name.Equals("Fire"))
+        //{
+        //    RandomPos();
+        //}
+    }
+    private void Awake()
+    {
+        randomPosFire = this;
+    }
+
+    private void Start()
+    {
+        RandomPos();
+        letRandomPos = true;
+    }
+
     // Start is called before the first frame update
-    void Start()
+    public void RandomPos()
     {
         float maxLengh = 0;
         float randomOffset = 0f;
-        if (transform.parent.gameObject.name.Equals("platformTSectionFire(Clone)") 
+        if (transform.parent.gameObject.name.Equals("platformTSectionFire(Clone)")
             || transform.parent.gameObject.name.Equals("platformTSectionWall(Clone)"))
         {
-            maxLengh = 8f;
+            maxLengh = 7f;
             randomOffset = Random.Range(-maxLengh, maxLengh);
             if (randomOffset < 2 && randomOffset > -2)
             {
@@ -27,9 +48,5 @@ public class randomPosFire : MonoBehaviour
             transform.localPosition += new Vector3(0,
                                     0, randomOffset);
         }
-
-        
     }
-
-
 }

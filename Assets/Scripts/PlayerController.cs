@@ -52,6 +52,17 @@ public class PlayerController : MonoBehaviour
             GenerateWorld.dummy.transform.forward = -this.transform.forward;
             GenerateWorld.RunDummy();
 
+            //If the rotations is less than 10 degress, so constrait Z pos
+            if (transform.rotation.eulerAngles.y < 190 && transform.rotation.eulerAngles.y > 170
+                 || transform.rotation.eulerAngles.y < 10 && transform.rotation.eulerAngles.y > -10)
+            {
+                magicRb.constraints = RigidbodyConstraints.FreezePositionX;
+            }
+            else
+            {
+                magicRb.constraints = RigidbodyConstraints.FreezePositionZ;
+            }
+
             if (GenerateWorld.lastPlatform.tag != "platformTSection")
             {
                 GenerateWorld.RunDummy();
@@ -65,6 +76,17 @@ public class PlayerController : MonoBehaviour
             transform.Rotate(Vector3.up * -90);
             GenerateWorld.dummy.transform.forward = -this.transform.forward;
             GenerateWorld.RunDummy();
+
+            //If the rotations is less than 10 degress, so constrait Z pos
+            if (transform.rotation.eulerAngles.y < 190 && transform.rotation.eulerAngles.y > 170
+                || transform.rotation.eulerAngles.y < 10 && transform.rotation.eulerAngles.y > -10)
+            {
+                magicRb.constraints = RigidbodyConstraints.FreezePositionX;
+            }
+            else
+            {
+                magicRb.constraints = RigidbodyConstraints.FreezePositionZ;
+            }
 
             if (GenerateWorld.lastPlatform.tag != "platformTSection")
             {
@@ -141,7 +163,7 @@ public class PlayerController : MonoBehaviour
     {
         magic.transform.position = magicStartPosition.position;
         magic.SetActive(true);
-        magicRb.AddForce(this.transform.forward * 4000);
+        magicRb.AddForce(transform.forward * 4000);
         Invoke("KillMagic", 1);
     }
 
