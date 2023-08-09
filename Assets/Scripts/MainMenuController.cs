@@ -5,7 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuController : MonoBehaviour
 {
+    [SerializeField] private GameObject HelpPanel;
+    [SerializeField] private GameObject[] panels;
+
     // Start is called before the first frame update
+    private void Start()
+    {
+        foreach (var item in panels)
+        {
+            item.SetActive(false);
+        }
+    }
+
     public void LoadNewScene()
     {
         SceneManager.LoadScene("Main", LoadSceneMode.Single);
@@ -22,5 +33,15 @@ public class MainMenuController : MonoBehaviour
         {
             GameQuit();
         }
+    }
+
+    public void CloseWindow(GameObject panel)
+    {
+        panel.SetActive(false);
+    }
+
+    public void OpennWindow(GameObject panel)
+    {
+        panel.SetActive(true);
     }
 }
