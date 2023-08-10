@@ -389,7 +389,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 122
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -554,6 +554,57 @@ MonoBehaviour:
     amount: 1
     isExtensible: 0
   - prefab: {fileID: 1248704154340718455, guid: ed55995ca4071b34fa9351656365db76, type: 3}
+    amount: 1
+    isExtensible: 0
+  - prefab: {fileID: 1248704154340718455, guid: 0e2a5898f0b71ba49acf05c8f8cf33e0, type: 3}
+    amount: 1
+    isExtensible: 0
+  - prefab: {fileID: 1248704154340718455, guid: 7c33d89f35ebdf241bfe48d3bb392804, type: 3}
+    amount: 1
+    isExtensible: 0
+  - prefab: {fileID: 1248704154340718455, guid: 965c3b57aab096c43a9a74bcb83324fc, type: 3}
+    amount: 1
+    isExtensible: 0
+  - prefab: {fileID: 5412402578013751156, guid: 3e7331c015fe0fa42b10cab26555ea7e, type: 3}
+    amount: 1
+    isExtensible: 0
+  - prefab: {fileID: 5412402578013751156, guid: 4bfa2f0ba532ad34fadc16550202dce0, type: 3}
+    amount: 1
+    isExtensible: 0
+  - prefab: {fileID: 5412402578013751156, guid: db5a0951821616c409eab938ca8cd476, type: 3}
+    amount: 1
+    isExtensible: 0
+  - prefab: {fileID: 5412402578013751156, guid: 688d07b61a315794cb0e1d72a2aec8df, type: 3}
+    amount: 1
+    isExtensible: 0
+  - prefab: {fileID: 5412402578013751156, guid: a8997b2a73c146645ba364ea4e56a0c2, type: 3}
+    amount: 1
+    isExtensible: 0
+  - prefab: {fileID: 5412402578013751156, guid: faba13c1950bcb3428ae8ebc3e604f55, type: 3}
+    amount: 1
+    isExtensible: 0
+  - prefab: {fileID: 1649569050134157950, guid: f17ea896dce899241bea883959196d7a, type: 3}
+    amount: 1
+    isExtensible: 0
+  - prefab: {fileID: 1649569050134157950, guid: 8384f33115e6bb2479eac6a7aa6c066f, type: 3}
+    amount: 1
+    isExtensible: 0
+  - prefab: {fileID: 1649569050134157950, guid: 4a6a982ce1a69c448b4e91620c06c47b, type: 3}
+    amount: 1
+    isExtensible: 0
+  - prefab: {fileID: 6919360489491855465, guid: 4852d45613150d445adfeb9abcb2a2f2, type: 3}
+    amount: 1
+    isExtensible: 0
+  - prefab: {fileID: 6919360489491855465, guid: e8046df6b7ef93e479ced9cdaad3940e, type: 3}
+    amount: 1
+    isExtensible: 0
+  - prefab: {fileID: 5497012491476924986, guid: 09a7662500cfa9e4b97c8410a1ad5bbd, type: 3}
+    amount: 1
+    isExtensible: 0
+  - prefab: {fileID: 5497012491476924986, guid: 28839e82a480f9545aababb2c28aaffb, type: 3}
+    amount: 1
+    isExtensible: 0
+  - prefab: {fileID: 5497012491476924986, guid: 3a8b6dc2cca81bf46bd5d03f21b92748, type: 3}
     amount: 1
     isExtensible: 0
   pooledItems: []
