@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -22,6 +23,12 @@ public class PlayerController : MonoBehaviour
 
     private int livesLeft;
 
+    [SerializeField] private Texture astroIcon, diedAstroIcon;
+
+    [SerializeField] private RawImage[] icons;
+
+    [SerializeField] private GameObject gameOverPanel;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +40,14 @@ public class PlayerController : MonoBehaviour
         isDead = false;
 
         livesLeft = PlayerPrefs.GetInt("Lives");
+
+        for (int i = 0; i < icons.Length; i++)
+        {
+            if (i >= livesLeft)
+            {
+                icons[i].texture = diedAstroIcon;
+            }
+        }
     }
 
     // Update is called once per frame
@@ -128,7 +143,19 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetTrigger("isDie");
             isDead = true;
-            Invoke("RestartGame", 1f);
+            livesLeft--;
+            PlayerPrefs.SetInt("Lives", livesLeft);
+
+            if (livesLeft > 0)
+            {
+                Invoke("RestartGame", 1f);
+            }
+            else
+            {
+                icons[0].texture = diedAstroIcon;
+                gameOverPanel.SetActive(true);
+            }
+            
         }
         else
         {
@@ -154,7 +181,18 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetTrigger("isDie");
             isDead = true;
-            Invoke("RestartGame", 1f);
+            livesLeft--;
+            PlayerPrefs.SetInt("Lives", livesLeft);
+
+            if (livesLeft > 0)
+            {
+                Invoke("RestartGame", 1f);
+            }
+            else
+            {
+                icons[0].texture = diedAstroIcon;
+                gameOverPanel.SetActive(true);
+            }
         }
     }
 

@@ -9,6 +9,7 @@ public class RegisterTexScore : MonoBehaviour
     void Start()
     {
         GameData.singleton.textScore = GetComponent<TextMeshProUGUI>();
+        GameData.singleton.UpdateTextScore(0);
     }
 
 }
