@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -19,6 +20,8 @@ public class PlayerController : MonoBehaviour
     public Transform magicStartPosition;
     private Rigidbody magicRb;
 
+    private int livesLeft;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +30,9 @@ public class PlayerController : MonoBehaviour
         startPosition = this.transform.position; // get the start pos of the player
 
         magicRb = magic.GetComponent<Rigidbody>();
+        isDead = false;
+
+        livesLeft = PlayerPrefs.GetInt("Lives");
     }
 
     // Update is called once per frame
@@ -122,6 +128,7 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetTrigger("isDie");
             isDead = true;
+            Invoke("RestartGame", 1f);
         }
         else
         {
@@ -141,6 +148,13 @@ public class PlayerController : MonoBehaviour
         if (other is SphereCollider)
         {
             canTurn = true;
+        }
+
+        if (other.gameObject.tag.Equals("fire"))
+        {
+            animator.SetTrigger("isDie");
+            isDead = true;
+            Invoke("RestartGame", 1f);
         }
     }
 
@@ -170,5 +184,10 @@ public class PlayerController : MonoBehaviour
     public void KillMagic()
     {
         magic.SetActive(false);
+    }
+
+    private void RestartGame()
+    {
+        SceneManager.LoadScene("Main", LoadSceneMode.Single);
     }
 }

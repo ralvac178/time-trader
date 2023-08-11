@@ -8,6 +8,7 @@ public class MainMenuController : MonoBehaviour
     [SerializeField] private GameObject HelpPanel;
     [SerializeField] private GameObject[] panels;
 
+    private int maxLives = 3;
     // Start is called before the first frame update
     private void Start()
     {
@@ -19,6 +20,7 @@ public class MainMenuController : MonoBehaviour
 
     public void LoadNewScene()
     {
+        PlayerPrefs.SetInt("Lives", maxLives);
         SceneManager.LoadScene("Main", LoadSceneMode.Single);
     }
 
