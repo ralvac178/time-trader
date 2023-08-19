@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
@@ -29,6 +30,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private GameObject gameOverPanel;
 
+    [SerializeField] private TextMeshProUGUI highScoreText;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -47,6 +50,15 @@ public class PlayerController : MonoBehaviour
             {
                 icons[i].texture = diedAstroIcon;
             }
+        }
+
+        if (PlayerPrefs.HasKey("highScore"))
+        {
+            highScoreText.text = $"Highest Score: {PlayerPrefs.GetInt("highScore")}";
+        }
+        else
+        {
+            highScoreText.text = $"Highest Score: 0";
         }
     }
 
@@ -139,7 +151,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag.Equals("fire") || collision.gameObject.tag.Equals("wall"))
+        if ((collision.gameObject.tag.Equals("fire") || collision.gameObject.tag.Equals("wall")) && !isDead)
         {
             animator.SetTrigger("isDie");
             isDead = true;
@@ -154,6 +166,20 @@ public class PlayerController : MonoBehaviour
             {
                 icons[0].texture = diedAstroIcon;
                 gameOverPanel.SetActive(true);
+
+                PlayerPrefs.SetInt("lastScore", PlayerPrefs.GetInt("Score"));
+                if (PlayerPrefs.HasKey("highScore"))
+                {
+                    int hs = PlayerPrefs.GetInt("highScore");
+                    if (hs < PlayerPrefs.GetInt("Score"))
+                    {
+                        PlayerPrefs.SetInt("highScore", PlayerPrefs.GetInt("Score"));
+                    }
+                }
+                else
+                {
+                    PlayerPrefs.SetInt("highScore", PlayerPrefs.GetInt("Score"));
+                }
             }
             
         }
@@ -177,7 +203,7 @@ public class PlayerController : MonoBehaviour
             canTurn = true;
         }
 
-        if (other.gameObject.tag.Equals("fire"))
+        if (other.gameObject.tag.Equals("fire") && !isDead)
         {
             animator.SetTrigger("isDie");
             isDead = true;
@@ -192,6 +218,20 @@ public class PlayerController : MonoBehaviour
             {
                 icons[0].texture = diedAstroIcon;
                 gameOverPanel.SetActive(true);
+
+                PlayerPrefs.SetInt("lastScore", PlayerPrefs.GetInt("Score"));
+                if (PlayerPrefs.HasKey("highScore"))
+                {
+                    int hs = PlayerPrefs.GetInt("highScore");
+                    if (hs < PlayerPrefs.GetInt("Score"))
+                    {
+                        PlayerPrefs.SetInt("highScore", PlayerPrefs.GetInt("Score"));
+                    }
+                }
+                else
+                {
+                    PlayerPrefs.SetInt("highScore", PlayerPrefs.GetInt("Score"));
+                }
             }
         }
     }
