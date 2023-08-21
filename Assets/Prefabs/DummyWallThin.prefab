@@ -138,6 +138,7 @@ MonoBehaviour:
   - {fileID: 6707705962395872966}
   - {fileID: 6707705963652676958}
   - {fileID: 6707705963412859992}
+  explosion: {fileID: 6547229153837838330, guid: 37e5d2e85dafa08409d777f6a7e10629, type: 3}
 --- !u!114 &592232094591293882
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,6 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4db3ebeaa0310724fa6ff64a2f5bce0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  letRandomPos: 0
 --- !u!1 &6707705962372939418
 GameObject:
   m_ObjectHideFlags: 0

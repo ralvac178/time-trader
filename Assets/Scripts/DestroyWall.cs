@@ -11,7 +11,7 @@ public class DestroyWall : MonoBehaviour
 
     private List<Vector3> brickPositions = new List<Vector3>();
     private List<Quaternion> brickRotations = new List<Quaternion>();
-
+    [SerializeField] private GameObject explosion;
 
     private void OnEnable()
     {
@@ -48,6 +48,9 @@ public class DestroyWall : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("spell"))
         {
+            GameObject explode = Instantiate(explosion, collision.contacts[0].point, Quaternion.identity);
+            collision.gameObject.SetActive(false);
+            Destroy(explode, 2.5f); // Detele SystemParticle explosion
             wallCollider.enabled = false;
 
             foreach (var rbBrick in rigidbodiesBricks)
