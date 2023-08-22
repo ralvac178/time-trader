@@ -10,6 +10,9 @@ public class GameData : MonoBehaviour
     public int score = 0;
     public TextMeshProUGUI textScore;
 
+    [SerializeField] private UpdateMusic updateMusic;
+    [SerializeField] private UpdateSound updateSound;
+
     // Awake is called before the first frame update
     void Awake()
     {
@@ -24,6 +27,10 @@ public class GameData : MonoBehaviour
         singleton = this;
 
         PlayerPrefs.SetInt("Score", 0);
+
+        //Set playerPrefs values from sounds scripts
+        updateMusic.Start();
+        updateSound.Start();
     }
 
     public void UpdateTextScore(int points)
