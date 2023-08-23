@@ -178,6 +178,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   floatPointsUI: {fileID: 7656746938506652768, guid: 287ef0d18753d5240b3258993affa396, type: 3}
+  sparkCoin: {fileID: 4397590622180570785, guid: 020f377de3d4ce14b80ce7bcedd0eb64, type: 3}
 --- !u!1001 &1311887906424362547
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -304,6 +305,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   floatPointsUI: {fileID: 7656746938506652768, guid: 287ef0d18753d5240b3258993affa396, type: 3}
+  sparkCoin: {fileID: 4397590622180570785, guid: 020f377de3d4ce14b80ce7bcedd0eb64, type: 3}
 --- !u!1001 &1579481410523127904
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -430,6 +432,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   floatPointsUI: {fileID: 7656746938506652768, guid: 287ef0d18753d5240b3258993affa396, type: 3}
+  sparkCoin: {fileID: 4397590622180570785, guid: 020f377de3d4ce14b80ce7bcedd0eb64, type: 3}
 --- !u!1001 &2909528965830102817
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -551,6 +554,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   floatPointsUI: {fileID: 7656746938506652768, guid: 287ef0d18753d5240b3258993affa396, type: 3}
+  sparkCoin: {fileID: 4397590622180570785, guid: 020f377de3d4ce14b80ce7bcedd0eb64, type: 3}
 --- !u!4 &7861611369640682555 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 271064839c89547c8babeb4500115a54, type: 3}
@@ -677,6 +681,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   floatPointsUI: {fileID: 7656746938506652768, guid: 287ef0d18753d5240b3258993affa396, type: 3}
+  sparkCoin: {fileID: 4397590622180570785, guid: 020f377de3d4ce14b80ce7bcedd0eb64, type: 3}
 --- !u!4 &8094462338923746222 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 271064839c89547c8babeb4500115a54, type: 3}
@@ -803,6 +808,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   floatPointsUI: {fileID: 7656746938506652768, guid: 287ef0d18753d5240b3258993affa396, type: 3}
+  sparkCoin: {fileID: 4397590622180570785, guid: 020f377de3d4ce14b80ce7bcedd0eb64, type: 3}
 --- !u!4 &8894760718116709792 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 271064839c89547c8babeb4500115a54, type: 3}
@@ -929,6 +935,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   floatPointsUI: {fileID: 7656746938506652768, guid: 287ef0d18753d5240b3258993affa396, type: 3}
+  sparkCoin: {fileID: 4397590622180570785, guid: 020f377de3d4ce14b80ce7bcedd0eb64, type: 3}
 --- !u!4 &2823248321898643835 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 271064839c89547c8babeb4500115a54, type: 3}
@@ -1055,6 +1062,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   floatPointsUI: {fileID: 7656746938506652768, guid: 287ef0d18753d5240b3258993affa396, type: 3}
+  sparkCoin: {fileID: 4397590622180570785, guid: 020f377de3d4ce14b80ce7bcedd0eb64, type: 3}
 --- !u!4 &4130026067767033151 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 271064839c89547c8babeb4500115a54, type: 3}

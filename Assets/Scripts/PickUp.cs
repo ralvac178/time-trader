@@ -7,6 +7,7 @@ public class PickUp : MonoBehaviour
     private MeshRenderer[] mrs;
     [SerializeField] private GameObject floatPointsUI;
     private GameObject canvas;
+    [SerializeField] private GameObject sparkCoin;
 
     private void Start()
     {
@@ -21,6 +22,9 @@ public class PickUp : MonoBehaviour
             GameObject floatingPoints = Instantiate(floatPointsUI, canvas.transform);
             Vector3 positionFloatCoin = Camera.main.WorldToScreenPoint(this.transform.position);
             floatingPoints.transform.position = positionFloatCoin;
+
+            GameObject coinSparks = Instantiate(sparkCoin, transform.position, Quaternion.identity);
+            Destroy(coinSparks, 1);
 
             PlayerController.sfx[7].Play();
             GameData.singleton.UpdateTextScore(10);

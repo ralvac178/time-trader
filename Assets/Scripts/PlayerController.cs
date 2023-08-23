@@ -34,7 +34,6 @@ public class PlayerController : MonoBehaviour
 
     public static AudioSource[] sfx;
 
-    private bool isFalling, isOnAir;
     public bool canFall = false;
 
     private Ray ray;
@@ -50,7 +49,7 @@ public class PlayerController : MonoBehaviour
             sfx[5].mute = false;
         }
 
-        isFalling = false;
+        canFall = false;
     }
 
     // Start is called before the first frame update
@@ -95,7 +94,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            animator.SetBool("IsJump", true);
+            animator.SetTrigger("IsJump");
             sfx[6].Play();
             rb.AddForce(Vector3.up * 200);
         }
@@ -163,23 +162,29 @@ public class PlayerController : MonoBehaviour
             transform.Translate(0.5f, 0, 0);
         }
 
-        if (rb.velocity.y < -3.8f && !isFalling && !isOnAir && canFall)
+        if (canFall)
         {
             sfx[4].mute = true;
             sfx[5].mute = true;
-            animator.SetTrigger("isDie");
-            isFalling = true;
+            animator.SetTrigger("isFalling");
         }
 
         // This is a Raycast
         ray = new Ray(transform.position, Vector3.down);
-        if (Physics.Raycast(ray, out hit, 5, layerMask, QueryTriggerInteraction.Ignore))
+        //if ()
+        bool testRay = Physics.Raycast(ray, out hit, 5, layerMask, QueryTriggerInteraction.Ignore);
+        bool testHightPos = transform.position.y < (platform.transform.position.y + 1);
+        if (testHightPos)
         {
-            canFall = false;
+            if (!testRay)
+            {
+                canFall = true;
+            }
+
         }
         else
         {
-            canFall = true;
+            canFall = false;
         }
         
     }
@@ -199,6 +204,7 @@ public class PlayerController : MonoBehaviour
         if ((collision.gameObject.tag.Equals("fire") || collision.gameObject.tag.Equals("wall")) && !isDead)
         {
             animator.SetTrigger("isDie");
+
             sfx[2].Play();
             isDead = true;
             livesLeft--;
@@ -251,7 +257,6 @@ public class PlayerController : MonoBehaviour
 
         if (other.gameObject.tag.Equals("fire") && !isDead)
         {
-            animator.SetTrigger("isDie");
             isDead = true;
             sfx[2].Play();
             livesLeft--;
@@ -325,15 +330,5 @@ public class PlayerController : MonoBehaviour
     void PlayStepFoot2()
     {
         sfx[5].Play();
-    }
-
-    void InitJumping()
-    {
-        isOnAir = true;
-    }
-
-    void IsOnGround()
-    {
-        isOnAir = false;
     }
 }
