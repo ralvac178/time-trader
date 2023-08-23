@@ -172,8 +172,8 @@ public class PlayerController : MonoBehaviour
         // This is a Raycast
         ray = new Ray(transform.position, Vector3.down);
         //if ()
-        bool testRay = Physics.Raycast(ray, out hit, 5, layerMask, QueryTriggerInteraction.Ignore);
-        bool testHightPos = transform.position.y < (platform.transform.position.y + 1);
+        bool testRay = Physics.Raycast(ray, out hit, 8, layerMask, QueryTriggerInteraction.Ignore);
+        bool testHightPos = transform.position.y < (platform.transform.position.y + 0.5f);
         if (testHightPos)
         {
             if (!testRay)

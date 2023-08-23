@@ -17,6 +17,11 @@ public class PickUp : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (PlayerController.isDead)
+        {
+            return;
+        }
+
         if (other.gameObject.CompareTag("Player"))
         {
             GameObject floatingPoints = Instantiate(floatPointsUI, canvas.transform);
