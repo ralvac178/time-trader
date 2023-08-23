@@ -20,7 +20,7 @@ public class UpdateSound : MonoBehaviour
             {
                 audioSources[i].volume = PlayerPrefs.GetFloat("SoundVolume");
             }
-            
+
         }
         else
         {
@@ -34,5 +34,10 @@ public class UpdateSound : MonoBehaviour
     public void UpdateSoundVolume()
     {
         PlayerPrefs.SetFloat("SoundVolume", slider.value);
+
+        for (int i = 1; i < audioSources.Length; i++)
+        {
+            audioSources[i].volume = slider.value;
+        }
     }
 }

@@ -53,6 +53,7 @@ public class DestroyWall : MonoBehaviour
             Destroy(explode, 2.5f); // Detele SystemParticle explosion
             wallCollider.enabled = false;
 
+            PlayerController.sfx[3].Play();
             foreach (var rbBrick in rigidbodiesBricks)
             {
                 rbBrick.isKinematic = false;

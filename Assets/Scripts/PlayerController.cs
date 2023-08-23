@@ -32,6 +32,27 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI highScoreText;
 
+    public static AudioSource[] sfx;
+
+    private bool isFalling, isOnAir;
+    public bool canFall = false;
+
+    private Ray ray;
+    private RaycastHit hit;
+
+    public LayerMask layerMask;
+
+    private void Awake()
+    {
+        if (sfx != null)
+        {
+            sfx[4].mute = false;
+            sfx[5].mute = false;
+        }
+
+        isFalling = false;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -60,6 +81,8 @@ public class PlayerController : MonoBehaviour
         {
             highScoreText.text = $"Highest Score: 0";
         }
+
+        sfx = GameObject.Find("GameData").GetComponents<AudioSource>();
     }
 
     // Update is called once per frame
@@ -73,6 +96,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             animator.SetBool("IsJump", true);
+            sfx[6].Play();
             rb.AddForce(Vector3.up * 200);
         }
         else if (Input.GetKeyDown(KeyCode.M))
@@ -103,6 +127,7 @@ public class PlayerController : MonoBehaviour
 
             transform.position = new Vector3(startPosition.x, transform.position.y,
                                             startPosition.z);
+
         }
         else if (Input.GetKeyDown(KeyCode.LeftArrow) && canTurn)
         {
@@ -137,6 +162,26 @@ public class PlayerController : MonoBehaviour
         {
             transform.Translate(0.5f, 0, 0);
         }
+
+        if (rb.velocity.y < -3.8f && !isFalling && !isOnAir && canFall)
+        {
+            sfx[4].mute = true;
+            sfx[5].mute = true;
+            animator.SetTrigger("isDie");
+            isFalling = true;
+        }
+
+        // This is a Raycast
+        ray = new Ray(transform.position, Vector3.down);
+        if (Physics.Raycast(ray, out hit, 5, layerMask, QueryTriggerInteraction.Ignore))
+        {
+            canFall = false;
+        }
+        else
+        {
+            canFall = true;
+        }
+        
     }
 
     public void StopJump()
@@ -154,6 +199,7 @@ public class PlayerController : MonoBehaviour
         if ((collision.gameObject.tag.Equals("fire") || collision.gameObject.tag.Equals("wall")) && !isDead)
         {
             animator.SetTrigger("isDie");
+            sfx[2].Play();
             isDead = true;
             livesLeft--;
             PlayerPrefs.SetInt("Lives", livesLeft);
@@ -207,6 +253,7 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetTrigger("isDie");
             isDead = true;
+            sfx[2].Play();
             livesLeft--;
             PlayerPrefs.SetInt("Lives", livesLeft);
 
@@ -255,6 +302,7 @@ public class PlayerController : MonoBehaviour
     {
         magic.transform.position = magicStartPosition.position;
         magic.SetActive(true);
+        sfx[1].Play();
         magicRb.AddForce(transform.forward * 4000);
         Invoke("KillMagic", 1);
     }
@@ -267,5 +315,25 @@ public class PlayerController : MonoBehaviour
     private void RestartGame()
     {
         SceneManager.LoadScene("Main", LoadSceneMode.Single);
+    }
+
+    void PlayStepFoot1()
+    {
+        sfx[4].Play();
+    }
+
+    void PlayStepFoot2()
+    {
+        sfx[5].Play();
+    }
+
+    void InitJumping()
+    {
+        isOnAir = true;
+    }
+
+    void IsOnGround()
+    {
+        isOnAir = false;
     }
 }

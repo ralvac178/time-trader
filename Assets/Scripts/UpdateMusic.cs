@@ -6,11 +6,12 @@ using UnityEngine.UI;
 public class UpdateMusic : MonoBehaviour
 {
     private Slider slider;
-    [SerializeField] private AudioSource audioSource;
+    private AudioSource audioSource;
     // Start is called before the first frame update
     public void Start()
     {
         slider = this.GetComponent<Slider>();
+        audioSource = GameObject.Find("GameData").GetComponents<AudioSource>()[0];
 
         if (PlayerPrefs.HasKey("MusicVolume"))
         {
@@ -28,5 +29,6 @@ public class UpdateMusic : MonoBehaviour
     public void UpdateMusicVolume()
     {
         PlayerPrefs.SetFloat("MusicVolume", slider.value);
+        audioSource.volume = slider.value;
     }
 }

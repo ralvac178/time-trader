@@ -15,6 +15,7 @@ public class PickUp : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            PlayerController.sfx[7].Play();
             GameData.singleton.UpdateTextScore(10);
 
             if (mrs != null)

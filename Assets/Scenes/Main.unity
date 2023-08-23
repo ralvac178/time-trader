@@ -573,6 +573,10 @@ MonoBehaviour:
   - {fileID: 928283480}
   gameOverPanel: {fileID: 1455912629}
   highScoreText: {fileID: 2038850471}
+  canFall: 0
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!4 &733080863 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400042, guid: 205e2472b93d1da44868e22af6bb2e6a, type: 3}
