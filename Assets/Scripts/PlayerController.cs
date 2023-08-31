@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
@@ -11,8 +12,8 @@ public class PlayerController : MonoBehaviour
     public static GameObject player;
     public static GameObject platform;
 
-    private bool canTurn = false;
-    private Vector3 startPosition;
+    public static bool canTurn = false;
+    public static Vector3 startPosition;
 
     public static bool isDead = false;
 
@@ -41,8 +42,17 @@ public class PlayerController : MonoBehaviour
 
     public LayerMask layerMask;
 
+    private InputMaster inputMaster;
+
+    [SerializeField] private HasTurn hasTurn;
+    [SerializeField] private HasJump hasJump;
+    [SerializeField] private HasShoot hasShoot;
+    [SerializeField] private HasMoveHorizontal hasMoveHorizontally;
+
     private void Awake()
     {
+        inputMaster = new InputMaster();
+
         if (sfx != null)
         {
             sfx[4].mute = false;
@@ -50,6 +60,34 @@ public class PlayerController : MonoBehaviour
         }
 
         canFall = false;
+    }
+
+    private void OnEnable()
+    {
+        inputMaster.Enable();
+        inputMaster.Player.Shoot.performed += _ => hasShoot.Shoot();
+        inputMaster.Player.Jump.performed += _ => hasJump.Jump();
+
+        inputMaster.Player.Horizontal.performed += context =>
+        {
+            hasMoveHorizontally.MoveHorizontal(0.5f * context.ReadValue<Vector2>());
+        };
+        
+        inputMaster.Player.TurnRight.performed += _ => hasTurn.TurnRight();
+        inputMaster.Player.TurnLeft.performed += _ => hasTurn.TurnLeft();
+    }
+
+    private void OnDisable()
+    {
+        inputMaster.Player.Shoot.performed -= _ => hasShoot.Shoot();
+        inputMaster.Player.Jump.performed -= _ => hasJump.Jump();
+        inputMaster.Player.Horizontal.performed -= context =>
+        {
+            hasMoveHorizontally.MoveHorizontal(0.5f * context.ReadValue<Vector2>());
+        };
+        inputMaster.Player.TurnRight.performed -= _ => hasTurn.TurnRight();
+        inputMaster.Player.TurnLeft.performed -= _ => hasTurn.TurnLeft();
+        inputMaster.Disable();
     }
 
     // Start is called before the first frame update
@@ -90,76 +128,6 @@ public class PlayerController : MonoBehaviour
         if (isDead)
         {
             return;
-        }
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            animator.SetTrigger("IsJump");
-            sfx[6].Play();
-            rb.AddForce(Vector3.up * 200);
-        }
-        else if (Input.GetKeyDown(KeyCode.M))
-        {
-            animator.SetBool("IsMagic", true);
-        }
-        else if (Input.GetKeyDown(KeyCode.RightArrow) && canTurn)
-        {
-            transform.Rotate(Vector3.up * 90);
-            GenerateWorld.dummy.transform.forward = -this.transform.forward;
-            GenerateWorld.RunDummy();
-
-            //If the rotations is less than 10 degress, so constrait Z pos
-            if (transform.rotation.eulerAngles.y < 190 && transform.rotation.eulerAngles.y > 170
-                 || transform.rotation.eulerAngles.y < 10 && transform.rotation.eulerAngles.y > -10)
-            {
-                magicRb.constraints = RigidbodyConstraints.FreezePositionX;
-            }
-            else
-            {
-                magicRb.constraints = RigidbodyConstraints.FreezePositionZ;
-            }
-
-            if (GenerateWorld.lastPlatform.tag != "platformTSection")
-            {
-                GenerateWorld.RunDummy();
-            }
-
-            transform.position = new Vector3(startPosition.x, transform.position.y,
-                                            startPosition.z);
-
-        }
-        else if (Input.GetKeyDown(KeyCode.LeftArrow) && canTurn)
-        {
-            transform.Rotate(Vector3.up * -90);
-            GenerateWorld.dummy.transform.forward = -this.transform.forward;
-            GenerateWorld.RunDummy();
-
-            //If the rotations is less than 10 degress, so constrait Z pos
-            if (transform.rotation.eulerAngles.y < 190 && transform.rotation.eulerAngles.y > 170
-                || transform.rotation.eulerAngles.y < 10 && transform.rotation.eulerAngles.y > -10)
-            {
-                magicRb.constraints = RigidbodyConstraints.FreezePositionX;
-            }
-            else
-            {
-                magicRb.constraints = RigidbodyConstraints.FreezePositionZ;
-            }
-
-            if (GenerateWorld.lastPlatform.tag != "platformTSection")
-            {
-                GenerateWorld.RunDummy();
-            }
-
-            transform.position = new Vector3(startPosition.x, transform.position.y,
-                                            startPosition.z);
-        }
-        else if (Input.GetKeyDown(KeyCode.A))
-        {
-            transform.Translate(-0.5f, 0, 0);
-        }
-        else if (Input.GetKeyDown(KeyCode.D))
-        {
-            transform.Translate(0.5f, 0, 0);
         }
 
         if (canFall)
